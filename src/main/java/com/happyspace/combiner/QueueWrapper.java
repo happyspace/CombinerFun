@@ -22,7 +22,7 @@ final class QueueWrapper<T> implements Comparable<QueueWrapper> {
     private LocalDateTime emptyStartTime;
     // priority
     private final Double priority;
-    // the queue it's self.
+    // the queue its self.
     private final BlockingQueue<T> queue;
     // how long this queue can remain empty.
     private final Duration isEmptyTimeout;
@@ -47,7 +47,8 @@ final class QueueWrapper<T> implements Comparable<QueueWrapper> {
         this.isEmptyTimeout = Duration.of(isEmptyTimeout, chronoUnit);
     }
 
-    // A
+    // A constructor to create an empty wrapper used internally
+    // to compare a queue against a queue wrapper collection. 
     protected QueueWrapper(BlockingQueue<T> queue){
         this(queue, 0.0, 0, TimeUnit.SECONDS);
     }
@@ -74,7 +75,7 @@ final class QueueWrapper<T> implements Comparable<QueueWrapper> {
         return queue.equals(that.queue);
 
     }
-    
+
     /**
      * Only the queue contributes to the hash.
      */
