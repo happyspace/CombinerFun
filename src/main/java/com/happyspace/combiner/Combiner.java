@@ -40,7 +40,7 @@ public abstract class Combiner<T>
     /**
      * Returns true if the given queue is currently an input queue to this Combiner.
      */
-    public abstract void hasInputQueue(BlockingQueue<T> queue);
+    public abstract boolean hasInputQueue(BlockingQueue<T> queue);
     
     public static class CombinerException extends Exception
     {
@@ -48,7 +48,11 @@ public abstract class Combiner<T>
         {
             super();
         }
-        
+
+        public CombinerException(String message, Throwable cause) {
+            super(message, cause);
+        }
+
         public CombinerException(String message)
         {
             super(message);
